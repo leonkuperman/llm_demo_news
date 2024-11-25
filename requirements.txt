@@ -1,0 +1,22 @@
+# FastAPI and related dependencies
+fastapi[all]
+uvicorn[standard]
+
+# OpenAI integration
+openai
+
+# YAML configuration
+pyyaml
+
+# Logging configuration
+loguru
+
+# Testing and linting
+pytest
+flake8
+
+# Optional utilities
+httpx
+
+#finnhub
+finnhub-python
