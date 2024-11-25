@@ -4,6 +4,8 @@
 
 LLM Demo News is a demonstration project showcasing the integration of financial news sentiment analysis using a Large Language Model (LLM). This project fetches market-related news articles, classifies their sentiment (positive, negative, neutral), and categorizes them by industry (e.g., Technology, Healthcare, etc.). It includes a backend powered by FastAPI and a React-based frontend for real-time visualization.
 
+You will need access to an LLM, like open AI and a free finnhub API token, which you can get here: https://finnhub.io/  
+
 ### Features
 - News Fetching: Retrieves market news from Finnhub.
 - Sentiment Analysis: Uses an LLM to classify article sentiment from -5 (negative) to 5 (positive).
