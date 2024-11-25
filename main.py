@@ -1,6 +1,7 @@
 # main.py
 from fastapi import FastAPI, Query, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 import asyncio
 import time
 from db_setup import init_db
@@ -28,6 +29,7 @@ FINNHUB_API_KEY = config["finnhub"]["api_key"]
 app = FastAPI()
 is_polling = False
 is_classifying = False
+
 
 # Add CORS middleware
 app.add_middleware(
@@ -135,3 +137,7 @@ async def get_articles(classified: str = Query("all", regex="^(true|false|all)$"
             })
     
     return {"articles": result}
+
+
+# Serve the React build directory
+app.mount("/", StaticFiles(directory="frontend/build", html=True), name="frontend")
