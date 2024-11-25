@@ -1,0 +1,6 @@
+llm:
+  url: 'https://llm.cast.ai/openai/v1/'
+  api_key: 'f10335f4109a466b49d05856fa70d6277bcd41cdbcba422a47c24f8475a27e04'
+
+finnhub:
+  api_key: 'che5aspr01qi6ghjvr90che5aspr01qi6ghjvr9g'

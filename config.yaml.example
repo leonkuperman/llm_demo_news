@@ -1,0 +1,6 @@
+llm:
+  url: "http://your-llm-url/v1/"
+  api_key: "your-llm-api-key"
+
+finnhub:
+  api_key: "your-finnhub-api-key"
