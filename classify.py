@@ -59,7 +59,7 @@ def classify_articles(n=1, llm_url=None, llm_api_key=None):
                 update_article_classification(conn, article['id'], sentiment_score, company_category)
 
                 # Small delay to avoid rate-limiting
-                time.sleep(0.5)
+                #time.sleep(0.5)
 
             except Exception as e:
                 logger.error(f"Error classifying article {article['id']}: {e}")
