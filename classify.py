@@ -28,7 +28,7 @@ def format_prompt(article):
         "reasoning": "The article mentions a new product launch which is expected to drive revenue growth."
     }
 
-    Don't return any other text outside of the JSON response. Your response needs to be parsed programmatically.
+    Return the JSON directly in the response, do not add any formatations. Don't return any other characters outside of the JSON response. Your response needs to be parsed programmatically.
 
     Article:""" + json.dumps(article_dict)
     
@@ -59,7 +59,7 @@ def classify_articles(n=1, llm_url=None, llm_api_key=None):
                 update_article_classification(conn, article['id'], sentiment_score, company_category)
 
                 # Small delay to avoid rate-limiting
-                #time.sleep(0.5)
+                time.sleep(0.5)
 
             except Exception as e:
                 logger.error(f"Error classifying article {article['id']}: {e}")
@@ -99,7 +99,7 @@ def classify_article(article, client):
 
     # Access the completion content
     completion_content = chat_completion.choices[0].message.content
-    logger.info(f"Classification response for article {article_id}: {completion_content}")
+    logger.info(f"Classification response for article ID {article_id}: {completion_content}")
 
     # Parse the JSON content
     classification = json.loads(completion_content)
