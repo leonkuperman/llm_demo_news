@@ -4,6 +4,7 @@ from db_setup import get_db_connection
 import logging
 import time
 from openai import OpenAI
+import main
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
@@ -36,8 +37,6 @@ def format_prompt(article):
     return return_prompt
 
 def classify_articles(n=1, llm_url=None, llm_api_key=None):
-    global is_classifying
-
     client = OpenAI(
         base_url=llm_url,
         api_key=llm_api_key
@@ -55,7 +54,7 @@ def classify_articles(n=1, llm_url=None, llm_api_key=None):
             return
 
         for article in articles:
-            if not is_classifying:
+            if not main.is_classifying:
                 return
 
             try:
