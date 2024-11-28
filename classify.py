@@ -96,7 +96,7 @@ def classify_article(article, client):
                 'content': prompt,
             }
         ],
-        model='gpt-4o'
+        model='gpt-4o-2024-05-13'
     )
 
     # Parse the response assuming it’s in JSON format
