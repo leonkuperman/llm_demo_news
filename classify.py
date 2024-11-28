@@ -36,6 +36,8 @@ def format_prompt(article):
     return return_prompt
 
 def classify_articles(n=1, llm_url=None, llm_api_key=None):
+    global is_classifying
+
     client = OpenAI(
         base_url=llm_url,
         api_key=llm_api_key
@@ -53,6 +55,9 @@ def classify_articles(n=1, llm_url=None, llm_api_key=None):
             return
 
         for article in articles:
+            if not is_classifying:
+                return
+
             try:
                 sentiment_score, company_category = classify_article(article, client)
 
