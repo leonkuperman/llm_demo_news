@@ -58,7 +58,7 @@ finnhub:
 ```
 5. Run the Server
 ```shell
-./start_server.sh
+./scripts/start_server.sh
 ```
 The backend will be available at http://127.0.0.1:8000
 
@@ -73,7 +73,7 @@ npm install
 ```
 3. Start the development server
 ```shell
-npm start
+npm run start
 ```
 The frontend will be available at http://localhost:3000.
 
