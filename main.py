@@ -140,4 +140,4 @@ async def get_articles(classified: str = Query("all", regex="^(true|false|all)$"
 
 
 # Serve the React build directory
-app.mount("/", StaticFiles(directory="frontend/build", html=True), name="frontend")
+#app.mount("/", StaticFiles(directory="frontend/build", html=True), name="frontend")
