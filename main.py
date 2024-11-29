@@ -59,6 +59,9 @@ async def update_settings(settings: LLMSettings):
         LLM_URL = settings.llmUrl
     if settings.llmApiKey is not None:
         LLM_API_KEY = settings.llmApiKey
+
+    logger.info(f"LLM_URL: {LLM_URL}")
+    logger.info(f"LLM_API_KEY: {LLM_API_KEY}")
     
     return {"message": "Settings updated successfully"}
 
@@ -66,7 +69,7 @@ async def update_settings(settings: LLMSettings):
 async def get_settings():
     return {
         "llmUrl": LLM_URL,
-        "llmApiKey": LLM_API_KEY
+        "llmApiKey": '***' if LLM_API_KEY else None
     }
 
 @app.get("/reset_classifications")

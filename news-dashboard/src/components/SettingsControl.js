@@ -16,7 +16,10 @@ const SettingsDrawer = ({ isOpen, onClose }) => {
   const [llmApiKey, setLlmApiKey] = useState("");
 
   const saveSettings = async () => {
-    await axios.post("http://localhost:8000/settings", { llmUrl, llmApiKey });
+    await axios.post("http://localhost:8000/settings", {
+      llmUrl,
+      llmApiKey: llmApiKey === "***" ? undefined : llmApiKey,
+    });
     onClose();
   };
 
