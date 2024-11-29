@@ -11,6 +11,12 @@ from datetime import datetime
 from classify import classify_articles
 from config_loader import load_config
 from logger_config import get_logger
+from pydantic import BaseModel
+
+class LLMSettings(BaseModel):
+    llmUrl: str | None = None
+    llmApiKey: str | None = None
+
 
 logger = get_logger(__name__)
 
@@ -43,6 +49,25 @@ app.add_middleware(
 @app.on_event("startup")
 async def startup_event():
     init_db()  # Ensure the DB is set up on startup
+
+# Add this new endpoint after your other routes
+@app.post("/settings")
+async def update_settings(settings: LLMSettings):
+    global LLM_URL, LLM_API_KEY
+    
+    if settings.llmUrl is not None:
+        LLM_URL = settings.llmUrl
+    if settings.llmApiKey is not None:
+        LLM_API_KEY = settings.llmApiKey
+    
+    return {"message": "Settings updated successfully"}
+
+@app.get("/settings")
+async def get_settings():
+    return {
+        "llmUrl": LLM_URL,
+        "llmApiKey": LLM_API_KEY
+    }
 
 @app.get("/reset_classifications")
 async def reset_classifications_route():
